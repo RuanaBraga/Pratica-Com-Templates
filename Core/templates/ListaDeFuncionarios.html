@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Lista de funcionarios</title>
+{% endblock title %}
+
+{% block content %}
+<br>
+<br>
+<div class="container" align="center">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Lista de Funcionário</h5>
+
+          {% if funcionarios|length > 0 %}
+            <p class="card-text">
+              Aqui está a lista de <code>Funcionários</code> cadastrados.
+            </p>
+
+            <table class="table">
+              <thead class="thead-dark">
+              <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Email</th>
+              </tr>
+              </thead>
+
+              <tbody>
+              {% for cadastro in funcionarios %}
+                <tr>
+                  <td>{{ cadastro.nome }}</td>
+                  <td>{{ cadastro.cpf }}</td>
+                  <td>{{ cadastro.telefone }}</td>
+                  <td>{{ cadastro.email }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        {% else %}
+          <div class="text-center mt-5 mb-5 jumbotron">
+            <h5>Nenhum <code>Funcionário</code> cadastrado ainda.</h5>
+          </div>
+        {% endif %}
+          <hr />
+          <div class="text-right">
+            <a href="{% url 'CadastroFuncionario' %}" class="btn btn-primary">
+              Cadastrar Funcionário
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+
